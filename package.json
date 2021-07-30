@@ -1,6 +1,6 @@
 {
   "name": "waiv-client-july",
-  "homepage": "https://waivmagazine.com/",
+  "homepage": "https://waivmagazine.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
