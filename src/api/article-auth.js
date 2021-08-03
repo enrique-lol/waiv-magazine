@@ -6,21 +6,30 @@ export const articleIndex = (user) => {
   return axios({
     url: apiUrl + '/articles',
     method: 'GET'
-    // Add an authorization header
-    // headers: {
-    //   // we need the user, so we have access to their token
-    //   'Authorization': `Bearer ${user.token}`
-    // }
   })
 }
+// 14 articles on homepage
+
+export const homeIndex = (user) => {
+  return axios({
+    url: apiUrl + '/first14',
+    method: 'GET'
+  })
+}
+export const index14 = (user, loadCount) => {
+  return axios({
+    url: apiUrl + '/next14',
+    method: 'GET',
+    data: { loadCount }
+  })
+}
+
 // Create an Article //////////////////////////////////////////////////////////
 export const articleCreate = (article, user) => {
   return axios({
     url: apiUrl + '/articles',
     method: 'POST',
-    // Add an authorization header
     headers: {
-      // we need the user, so we have access to their token
       'Authorization': `Bearer ${user.token}`
     },
     data: { article }
@@ -31,9 +40,7 @@ export const showArticle = (id, user) => {
   return axios({
     url: apiUrl + '/articles/' + id,
     method: 'GET',
-    // Add an authorization header
     headers: {
-      // we need the user, so we have access to their token
       'Authorization': `Bearer ${user.token}`
     }
   })
@@ -45,9 +52,7 @@ export const articleUpdate = (id, article, user) => {
   return axios({
     url: apiUrl + '/articles/' + id,
     method: 'PATCH',
-    // Add an authorization header
     headers: {
-      // we need the user, so we have access to their token
       'Authorization': `Bearer ${user.token}`
     },
     data: { article: article }

@@ -6,13 +6,15 @@ import { v4 as uuid } from 'uuid'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import LoadMore from './components/LoadMore/LoadMore'
 import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 // import AllArticles from './components/AllArticles/AllArticles.js'
 // import ViewArticle from './routes/ViewArticle.js'
-import IndexArticles from './routes/IndexArticles.js'
+import HomeIndex from './routes/HomeIndex.js'
 import ViewArticle from './routes/ViewArticle.js'
 import CreateArticle from './routes/CreateArticle.js'
 import UpdateArticle from './routes/UpdateArticle.js'
@@ -64,7 +66,7 @@ class App extends Component {
         ))}
         <main className="container">
           <Route exact path='/' render={() => (
-            <IndexArticles msgAlert={this.msgAlert} />
+            <HomeIndex msgAlert={this.msgAlert} />
           )} />
           <Route exact path='/about' render={() => (
             <FutureFeature msgAlert={this.msgAlert} setUser={this.setUser} />
@@ -88,7 +90,7 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/home' render={() => (
-            <IndexArticles msgAlert={this.msgAlert} user={user} />
+            <HomeIndex msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/home/articles/:id' render={() => (
             <ViewArticle msgAlert={this.msgAlert} user={user} />
@@ -98,13 +100,16 @@ class App extends Component {
           )} />
         </main>
 
+        <LoadMore />
+        <Footer />
+
       </Fragment>
     )
   }
 }
 
 // <div>
-//   <Route path="/index-articles" component={IndexArticles}/>
+//   <Route path="/index-articles" component={HomeIndex}/>
 // </div>
 
 export default App

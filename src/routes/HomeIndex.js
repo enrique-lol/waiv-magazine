@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { articleIndex } from '../api/article-auth.js'
+import Skeleton from 'react-loading-skeleton'
+import { homeIndex } from '../api/article-auth.js'
 // import { Card } from 'react-bootstrap'
 
-class ArticleIndex extends Component {
+class HomeIndex extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -19,7 +20,7 @@ class ArticleIndex extends Component {
         variant: 'warning'
       })
     }
-    articleIndex(user)
+    homeIndex(user)
       .then(res => this.setState({ articles: res.data.articles }))
       .catch(error => {
         msgAlert({
@@ -59,11 +60,11 @@ class ArticleIndex extends Component {
 
     return (
       <Fragment>
-        <div className='divider'>
-          <h2 className='featured-text raleway'>Featured</h2>
-        </div>
         <div className='bannana'>
-          {articlesJsx}
+          {!articlesJsx ? (
+            <Skeleton count={2} height={500} width={640} />
+          ) : (articlesJsx)}
+
         </div>
       </Fragment>
     )
@@ -80,4 +81,4 @@ class ArticleIndex extends Component {
 //   </Card.Body>
 // </Card>
 
-export default ArticleIndex
+export default HomeIndex
