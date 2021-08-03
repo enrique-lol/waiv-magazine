@@ -46,7 +46,7 @@ class ArticleIndex extends Component {
       <Link to={`/home/articles/${article.id}`} key={article.id}>
         <article className='home-card'>
           <section className='top-card'>
-            <img className='home-image' src={article.mainImageUrl}/>
+            <img className='home-image' src={article.thumbnail}/>
           </section>
 
           <section className='bot-card'>
@@ -71,7 +71,7 @@ class ArticleIndex extends Component {
 }
 
 // <Card className='home-card'>
-//   <Card.Img variant="top" src={article.mainImageUrl} />
+//   <Card.Img variant="top" src={article.thumbnail} />
 //   <Card.Body>
 //     <Card.Title className='roboto-mono thicc-letters'>{article.title}</Card.Title>
 //     <Card.Text>

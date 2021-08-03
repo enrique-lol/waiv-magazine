@@ -56,7 +56,7 @@ class ViewArticle extends Component {
         <Fragment>
           <div className='article-main'>
             <h2 className='roboto-mono'>{article.title}</h2>
-            <img className='article-image' src={article.mainImageUrl}/>
+            <img className='article-image' src={article.thumbnail}/>
             <p className='art-text'>By {article.authorName} on {article.publishDate} -- {article.intro}</p>
             {article.img2 ? <img className='article-image' src={article.img2}/> : null }
             {article.heading2 ? <h6 className='head-text'>{article.heading2}</h6> : null }

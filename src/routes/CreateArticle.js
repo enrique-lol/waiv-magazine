@@ -12,7 +12,7 @@ class CreateArticle extends Component {
         title: '',
         content: '',
         authorName: '',
-        mainImageUrl: ''
+        thumbnail: ''
       },
       createdId: null
     }
