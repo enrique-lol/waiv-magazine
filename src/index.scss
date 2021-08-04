@@ -165,6 +165,13 @@ a:hover {
   width: 80%;
 }
 
+// //////////////////////////// Footer
+
+.footer {
+  background-color: $black;
+  color: $white;
+}
+
 // ////////////////////////////MEDIA QUERIES
 
 @media (max-width: 770px) {
