@@ -24,7 +24,7 @@ class HomeIndex extends Component {
     }
     homeIndex(user)
       .then(res => this.setState({ articles: res.data.articles }))
-      // .then(() => console.log(`STATE: ${this.state.articles}`))
+      .then(() => console.log(`STATE: ${this.state.articles}`))
       // .then(res => console.log(`RESPONSE: ${res.data}`))
       .catch(error => {
         msgAlert({
@@ -40,22 +40,9 @@ class HomeIndex extends Component {
       url: `${apiUrl}/second14`,
       method: 'GET'
     })
-      .then(res => {
-        console.log(res.data.articles)
-        return res.data.articles
-      })
-      // .then(() => console.log(`STATE: ${this.state.articles}`))
+      .then(res => this.setState({ articles: [...this.state.articles, res.data.articles] }))
+      .then(() => console.log(`STATE: ${this.state.articles}`))
       .catch(console.error)
-  }
-
-  async componentDidUpdate (prevProps, prevState) {
-    if (prevState.articles) {
-      const newArticles = await this.loadBatch()
-        // .then(console.log(newArticles))
-        .then(res => {
-          this.setState({ articles: newArticles })
-        })
-    }
   }
 
   render () {
