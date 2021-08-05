@@ -24,7 +24,7 @@ class HomeIndex extends Component {
     }
     homeIndex(user)
       .then(res => this.setState({ articles: res.data.articles }))
-      .then(() => console.log(`STATE: ${this.state.articles}`))
+      // .then(() => console.log(`STATE: ${this.state.articles}`))
       // .then(res => console.log(`RESPONSE: ${res.data}`))
       .catch(error => {
         msgAlert({
@@ -34,20 +34,33 @@ class HomeIndex extends Component {
         })
       })
   }
+
   loadBatch = () => {
     axios({
       url: `${apiUrl}/second14`,
       method: 'GET'
     })
-      .then(res => this.setState({ articles2: [ ...res.data.articles ] }))
-      // .then(res => this.setState({ ...this.state.articles }))
-      .then(() => console.log(`STATE: ${this.state.articles}`))
+      .then(res => {
+        console.log(res.data.articles)
+        return res.data.articles
+      })
+      // .then(() => console.log(`STATE: ${this.state.articles}`))
       .catch(console.error)
   }
 
+  async componentDidUpdate (prevProps, prevState) {
+    if (prevState.articles) {
+      const newArticles = await this.loadBatch()
+        // .then(console.log(newArticles))
+        .then(res => {
+          this.setState({ articles: newArticles })
+        })
+    }
+  }
+
   render () {
-    const { articles, articles2 } = this.state
-    if (!articles && !articles2) {
+    const { articles } = this.state
+    if (!articles) {
       return (
         <p>Coming soon ...</p>
       )
@@ -72,29 +85,12 @@ class HomeIndex extends Component {
         </article>
       </Link>
     ))
-    const articlesJsx2 = articles2.map(article => (
-      <Link to={`/home/articles/${article.id}`} key={article.id}>
-        <article className='home-card'>
-          <section className='top-card'>
-            <img className='home-image' src={article.thumbnail}/>
-          </section>
-
-          <section className='bot-card'>
-            <h3 className='roboto-mono thicc-letters'>{article.title}</h3>
-            <p>{article.authorName}</p>
-          </section>
-        </article>
-      </Link>
-    ))
-
     return (
       <Fragment>
         <div className='bannana'>
           {!articlesJsx ? (
             <Skeleton count={2} height={500} width={640} />
           ) : (articlesJsx)}
-
-          {articlesJsx2 || null }
 
           <button onClick={this.loadBatch}>Load More!</button>
 
