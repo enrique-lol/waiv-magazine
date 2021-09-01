@@ -79,12 +79,12 @@ class HomeIndex extends Component {
             <Skeleton count={2} height={500} width={640} />
           ) : (articlesJsx)}
 
-          <button onClick={this.loadBatch}>Load More!</button>
-
         </div>
       </Fragment>
     )
   }
 }
+
+// <button onClick={this.loadBatch}>Load More!</button>
 
 export default HomeIndex
