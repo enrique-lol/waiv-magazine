@@ -3,7 +3,7 @@ import { withRouter, Redirect, Link } from 'react-router-dom'
 // import { Button } from 'react-bootstrap/'
 import apiUrl from '../apiConfig'
 import axios from 'axios'
-import { showArticle } from './../api/article-auth.js'
+import { getArticle } from './../api/article-auth.js'
 import FutureFeature from './FutureFeature.js'
 
 class ViewArticle extends Component {
@@ -17,7 +17,7 @@ class ViewArticle extends Component {
   }
   componentDidMount () {
     const { match, msgAlert } = this.props
-    showArticle(match.params.id)
+    getArticle(match.params.id)
       .then(res => this.setState({ article: res.data.article }))
       .catch(error => {
         msgAlert({
@@ -69,23 +69,51 @@ class ViewArticle extends Component {
             {article.paragraph4 ? <p className='art-text'>{article.paragraph4}</p> : null }
           </div>
 
-          <div>
-            <div className='divider comm-comm'>
-              <h2 className='community-comments-text raleway'>Community Comments</h2>
-            </div>
-            < FutureFeature />
-            <button className='a-button' onClick={this.deleteArticle}>a1</button>
-            <button className='a-button'><Link to={`/home/articles/${article.id}/update/`}>a2</Link></button>
-          </div>
         </Fragment>
       )
     }
+
+    const comments = (
+      <Fragment>
+        <div>
+          <div className='divider comm-comm'>
+            <h2 className='community-comments-text raleway'>Community Comments</h2>
+          </div>
+          < FutureFeature />
+          <button className='a-button' onClick={this.deleteArticle}>a1</button>
+          <button className='a-button'><Link to={`/home/articles/${article.id}/update/`}>a2</Link></button>
+        </div>
+      </Fragment>
+    )
+
     return (
       <Fragment>
         {deleted ? <Redirect to="/home"/> : articleJsx}
+        {comments}
       </Fragment>
     )
   }
 }
+
+// const comments = (
+//   <Fragment>
+//     <div>
+//       <div className='divider comm-comm'>
+//         <h2 className='community-comments-text raleway'>Community Comments</h2>
+//       </div>
+//       < FutureFeature />
+//       <button className='a-button' onClick={this.deleteArticle}>a1</button>
+//       <button className='a-button'><Link to={`/home/articles/${article.id}/update/`}>a2</Link></button>
+//     </div>
+//   </Fragment>
+// )
+// const signInBanner = (
+//   <Fragment>
+//     <div>
+//       <h3>Sign in, boi</h3>
+//       <button><Link to={`/home/articles/${article.id}/update/`}>a2</Link></button>
+//     </div>
+//   </Fragment>
+// )
 
 export default withRouter(ViewArticle)

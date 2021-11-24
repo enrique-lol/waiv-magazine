@@ -3,7 +3,7 @@ import { Redirect, withRouter } from 'react-router-dom'
 // import apiUrl from '../apiConfig'
 // import axios from 'axios'
 import ArticleForm from '../shared/ArticleForm.js'
-import { showArticle, articleUpdate } from './../api/article-auth.js'
+import { getArticle, articleUpdate } from './../api/article-auth.js'
 
 class UpdateArticle extends Component {
   constructor (props) {
@@ -22,7 +22,7 @@ class UpdateArticle extends Component {
     // }
     const { user, match, msgAlert } = this.props
     // make a request for a single bathroom
-    showArticle(match.params.id, user)
+    getArticle(match.params.id, user)
       .then(res => this.setState({ article: res.data.article }))
       .catch(error => {
         msgAlert({

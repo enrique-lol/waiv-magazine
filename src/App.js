@@ -68,9 +68,6 @@ class App extends Component {
           <Route exact path='/' render={() => (
             <HomeIndex msgAlert={this.msgAlert} />
           )} />
-          <Route exact path='/articles/:id' render={() => (
-            <ViewArticle msgAlert={this.msgAlert}/>
-          )} />
           <Route exact path='/about' render={() => (
             <FutureFeature msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />

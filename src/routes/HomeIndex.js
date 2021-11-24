@@ -115,21 +115,3 @@ class HomeIndex extends Component {
 // <button onClick={this.loadBatch}>Load More!</button>
 
 export default HomeIndex
-
-//
-//
-//
-// const grid1Jsx = articles.map(article => (
-//   <Link to={`/home/articles/${article.id}`} key={article.id}>
-//     <article className='home-card'>
-//       <section className='top-card'>
-//         <img className='home-image' src={article.thumbnail}/>
-//       </section>
-//
-//       <section className='bot-card'>
-//         <h3 className='roboto-mono thicc-letters'>{article.title}</h3>
-//         <p>{article.authorName}</p>
-//       </section>
-//     </article>
-//   </Link>
-// ))

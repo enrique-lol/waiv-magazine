@@ -19,13 +19,13 @@ const unauthenticatedOptions = (
 
 const home = (
   <Navbar.Brand href="#/home">
-    <img src={logo} alt='Waiv Magazine logo'/>
+    <img src={logo} alt='Waiv Magazine'/>
   </Navbar.Brand>
 )
 
 const unHome = (
   <Navbar.Brand href="#/">
-    <img src={logo} alt='Waiv Magazine logo'/>
+    <img src={logo} alt='Waiv Magazine'/>
   </Navbar.Brand>
 )
 // const alwaysOptions = (

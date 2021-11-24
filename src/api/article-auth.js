@@ -36,7 +36,7 @@ export const articleCreate = (article, user) => {
   })
 }
 // Show 1 Article ////////////////////////////////////////////////////////
-export const showArticle = (id) => {
+export const getArticle = (id) => {
   return axios({
     url: apiUrl + '/articles/' + id,
     method: 'GET'
