@@ -10,7 +10,7 @@ export const articleIndex = (user) => {
 }
 // 14 articles on homepage
 
-export const homeIndex = (user) => {
+export const homeIndex = () => {
   return axios({
     url: apiUrl + '/first14',
     method: 'GET'
@@ -36,13 +36,13 @@ export const articleCreate = (article, user) => {
   })
 }
 // Show 1 Article ////////////////////////////////////////////////////////
-export const showArticle = (id, user) => {
+export const showArticle = (id) => {
   return axios({
     url: apiUrl + '/articles/' + id,
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${user.token}`
-    }
+    method: 'GET'
+    // headers: {
+    //   'Authorization': `Bearer ${user.token}`
+    // }
   })
 }
 

@@ -16,8 +16,8 @@ class ViewArticle extends Component {
     }
   }
   componentDidMount () {
-    const { user, match, msgAlert } = this.props
-    showArticle(match.params.id, user)
+    const { match, msgAlert } = this.props
+    showArticle(match.params.id)
       .then(res => this.setState({ article: res.data.article }))
       .catch(error => {
         msgAlert({

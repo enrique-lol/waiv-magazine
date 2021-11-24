@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import Skeleton from 'react-loading-skeleton'
 import { homeIndex } from '../api/article-auth.js'
 import apiUrl from '../apiConfig'
 import axios from 'axios'
@@ -15,13 +14,6 @@ class HomeIndex extends Component {
   }
   componentDidMount () {
     const { msgAlert, user } = this.props
-    if (!user) {
-      msgAlert({
-        heading: 'Log In or Join For Free',
-        message: 'For free access, create an account',
-        variant: 'warning'
-      })
-    }
     homeIndex(user)
       .then(res => this.setState({ articles: res.data.articles }))
       .then(() => console.log(`STATE: ${this.state.articles}`))
@@ -58,8 +50,14 @@ class HomeIndex extends Component {
       )
     }
 
-    const articlesJsx = articles.map(article => (
-      <Link to={`/home/articles/${article.id}`} key={article.id}>
+    const grid1 = articles.slice(0, 4)
+    // const highlight = articles[4]
+    const grid2 = articles.slice(5, 9)
+    // const category = articles[9]
+    const grid3 = articles.slice(10, 14)
+
+    const grid1Jsx = grid1.map(article => (
+      <Link to={`/articles/${article.id}`} key={article.id}>
         <article className='home-card'>
           <section className='top-card'>
             <img className='home-image' src={article.thumbnail}/>
@@ -72,12 +70,41 @@ class HomeIndex extends Component {
         </article>
       </Link>
     ))
+    const grid2Jsx = grid2.map(article => (
+      <Link to={`/articles/${article.id}`} key={article.id}>
+        <article className='home-card'>
+          <section className='top-card'>
+            <img className='home-image' src={article.thumbnail}/>
+          </section>
+
+          <section className='bot-card'>
+            <h3 className='roboto-mono thicc-letters'>{article.title}</h3>
+            <p>{article.authorName}</p>
+          </section>
+        </article>
+      </Link>
+    ))
+    const grid3Jsx = grid3.map(article => (
+      <Link to={`/articles/${article.id}`} key={article.id}>
+        <article className='home-card'>
+          <section className='top-card'>
+            <img className='home-image' src={article.thumbnail}/>
+          </section>
+
+          <section className='bot-card'>
+            <h3 className='roboto-mono thicc-letters'>{article.title}</h3>
+            <p>{article.authorName}</p>
+          </section>
+        </article>
+      </Link>
+    ))
+
     return (
       <Fragment>
-        <div className='bannana'>
-          {!articlesJsx ? (
-            <Skeleton count={2} height={500} width={640} />
-          ) : (articlesJsx)}
+        <div className='content'>
+          {grid1Jsx || null}
+          {grid2Jsx || null}
+          {grid3Jsx || null}
 
         </div>
       </Fragment>
@@ -88,3 +115,21 @@ class HomeIndex extends Component {
 // <button onClick={this.loadBatch}>Load More!</button>
 
 export default HomeIndex
+
+//
+//
+//
+// const grid1Jsx = articles.map(article => (
+//   <Link to={`/home/articles/${article.id}`} key={article.id}>
+//     <article className='home-card'>
+//       <section className='top-card'>
+//         <img className='home-image' src={article.thumbnail}/>
+//       </section>
+//
+//       <section className='bot-card'>
+//         <h3 className='roboto-mono thicc-letters'>{article.title}</h3>
+//         <p>{article.authorName}</p>
+//       </section>
+//     </article>
+//   </Link>
+// ))

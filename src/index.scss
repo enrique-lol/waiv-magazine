@@ -83,7 +83,7 @@ Button {
   color: $yellow;
 }
 
-.bannana {
+.content {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -91,13 +91,13 @@ Button {
   margin: 0;
 }
 
-.bannana > a {
+.content > a {
   // border: 2px solid $red;
   width: 40%;
 }
 
 .home-card {
-  background-color: $opaquewhite;
+  // background-color: $opaquewhite;
   border-radius: 12px;
   color: $black;
   margin-top: 30px;
@@ -175,8 +175,8 @@ a:hover {
 // ////////////////////////////MEDIA QUERIES
 
 @media (max-width: 770px) {
-  .bannana > a {
-    width: 100%;
+  .content > a {
+    width: 43%;
   }
 
   .article-image {
