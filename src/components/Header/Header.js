@@ -17,17 +17,17 @@ const unauthenticatedOptions = (
   </Fragment>
 )
 
-const home = (
-  <Navbar.Brand href="#/home">
-    <img src={logo} alt='Waiv Magazine'/>
-  </Navbar.Brand>
-)
-
-const unHome = (
-  <Navbar.Brand href="#/">
-    <img src={logo} alt='Waiv Magazine'/>
-  </Navbar.Brand>
-)
+// const home = (
+//   <Navbar.Brand href="#/home">
+//     <img src={logo} alt='Waiv Magazine'/>
+//   </Navbar.Brand>
+// )
+//
+// const unHome = (
+//   <Navbar.Brand href="#/">
+//     <img src={logo} alt='Waiv Magazine'/>
+//   </Navbar.Brand>
+// )
 // const alwaysOptions = (
 //   <Fragment>
 //     <Nav.Link href="#/">Home</Nav.Link>
@@ -42,7 +42,9 @@ const otherOptions = (
 
 const Header = ({ user, guestId }) => (
   <Navbar >
-    { user ? home : unHome }
+    <Navbar.Brand href="#/">
+      <img src={logo} alt='Waiv Magazine'/>
+    </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">

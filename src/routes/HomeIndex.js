@@ -50,15 +50,30 @@ class HomeIndex extends Component {
       )
     }
 
-    const grid1 = articles.slice(0, 4)
-    // const highlight = articles[4]
-    const grid2 = articles.slice(5, 9)
-    // const category = articles[9]
-    const grid3 = articles.slice(10, 14)
+    const gridcluster1 = articles.slice(0, 4)
+    const highlight = articles.slice(4, 5)
+    const gridcluster2 = articles.slice(5, 9)
+    const category = articles.slice(9, 10)
+    const gridcluster3 = articles.slice(10, 14)
 
-    const grid1Jsx = grid1.map(article => (
+    const highlightJsx = highlight.map(article => (
       <Link to={`/articles/${article.id}`} key={article.id}>
-        <article className='home-card'>
+        <article className='home-card hig'>
+          <section className='left-card'>
+            <img className='home-image' src={article.thumbnail}/>
+          </section>
+
+          <section className='right-card'>
+            <div><h3 className='roboto-mono thicc-letters'>{article.quote}</h3></div>
+            <div><h3 className='roboto-mono thicc-letters'>{article.summary}</h3></div>
+          </section>
+        </article>
+      </Link>
+    ))
+
+    const categoryJsx = category.map(article => (
+      <Link to={`/articles/${article.id}`} key={article.id}>
+        <article className='home-card cat'>
           <section className='top-card'>
             <img className='home-image' src={article.thumbnail}/>
           </section>
@@ -70,9 +85,10 @@ class HomeIndex extends Component {
         </article>
       </Link>
     ))
-    const grid2Jsx = grid2.map(article => (
+
+    const gridcluster1Jsx = gridcluster1.map(article => (
       <Link to={`/articles/${article.id}`} key={article.id}>
-        <article className='home-card'>
+        <article>
           <section className='top-card'>
             <img className='home-image' src={article.thumbnail}/>
           </section>
@@ -84,9 +100,23 @@ class HomeIndex extends Component {
         </article>
       </Link>
     ))
-    const grid3Jsx = grid3.map(article => (
+    const gridcluster2Jsx = gridcluster2.map(article => (
       <Link to={`/articles/${article.id}`} key={article.id}>
-        <article className='home-card'>
+        <article>
+          <section className='top-card'>
+            <img className='home-image' src={article.thumbnail}/>
+          </section>
+
+          <section className='bot-card'>
+            <h3 className='roboto-mono thicc-letters'>{article.title}</h3>
+            <p>{article.authorName}</p>
+          </section>
+        </article>
+      </Link>
+    ))
+    const gridcluster3Jsx = gridcluster3.map(article => (
+      <Link to={`/articles/${article.id}`} key={article.id}>
+        <article>
           <section className='top-card'>
             <img className='home-image' src={article.thumbnail}/>
           </section>
@@ -102,10 +132,19 @@ class HomeIndex extends Component {
     return (
       <Fragment>
         <div className='content'>
-          {grid1Jsx || null}
-          {grid2Jsx || null}
-          {grid3Jsx || null}
-
+          {gridcluster1Jsx}
+        </div>
+        <div>
+          {highlightJsx}
+        </div>
+        <div className='content'>
+          {gridcluster2Jsx}
+        </div>
+        <div className='content'>
+          {categoryJsx}
+        </div>
+        <div className='content'>
+          {gridcluster3Jsx}
         </div>
       </Fragment>
     )

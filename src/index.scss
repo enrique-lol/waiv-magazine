@@ -7,6 +7,7 @@ $opaquewhite: rgba(0, 0, 0, .05);
 $red: #f00;
 $black: #000;
 $yellow: #ff0;
+$yellow2: #ffc700;
 $soft-yellow: #fff888;
 
 body {
@@ -91,17 +92,24 @@ Button {
   margin: 0;
 }
 
+// cluster
 .content > a {
-  // border: 2px solid $red;
+  color: $black;
+  margin-top: 30px;
   width: 40%;
 }
 
-.home-card {
-  // background-color: $opaquewhite;
-  border-radius: 12px;
-  color: $black;
-  margin-top: 30px;
+// highlight
+.hig {
+  background-color: $yellow2;
+  border: 3px solid $white;
+  display: flex;
 }
+
+.hig > section {
+  border: 2px solid $red;
+}
+
 
 .home-image {
   max-width: 100%;
