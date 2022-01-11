@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { homeIndex } from '../api/article-auth.js'
 import apiUrl from '../apiConfig'
 import axios from 'axios'
-// import { Card } from 'react-bootstrap'
+import { Carousel } from 'react-bootstrap'
 
 class HomeIndex extends Component {
   constructor (props) {
@@ -56,21 +56,61 @@ class HomeIndex extends Component {
     const category = articles.slice(9, 10)
     const gridcluster3 = articles.slice(10, 14)
 
+    const carouselJsx = (
+      <Carousel>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="holder.js/800x400?text=First slide&bg=373940"
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="holder.js/800x400?text=Second slide&bg=282c34"
+            alt="Second slide"
+          />
+
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="holder.js/800x400?text=Third slide&bg=20232a"
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+    )
+    // /
     const highlightJsx = highlight.map(article => (
       <Link to={`/articles/${article.id}`} key={article.id}>
         <article className='home-card hig'>
-          <section className='left-card'>
-            <img className='home-image' src={article.thumbnail}/>
+          <section className='left-hig'>
+            <img className='hig-image' src={article.thumbnail}/>
           </section>
 
-          <section className='right-card'>
-            <div><h3 className='roboto-mono thicc-letters'>{article.quote}</h3></div>
-            <div><h3 className='roboto-mono thicc-letters'>{article.summary}</h3></div>
+          <section className='right-hig'>
+            <div><h3 className='roboto-mono hig-quote'>{article.quote}</h3></div>
+            <div><h3 className='roboto-mono hig-summary'>{article.summary}</h3></div>
           </section>
         </article>
       </Link>
     ))
-
+    // /
     const categoryJsx = category.map(article => (
       <Link to={`/articles/${article.id}`} key={article.id}>
         <article className='home-card cat'>
@@ -131,6 +171,7 @@ class HomeIndex extends Component {
 
     return (
       <Fragment>
+        {carouselJsx}
         <div className='content'>
           {gridcluster1Jsx}
         </div>

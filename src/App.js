@@ -108,8 +108,4 @@ class App extends Component {
   }
 }
 
-// <div>
-//   <Route path="/index-articles" component={HomeIndex}/>
-// </div>
-
 export default App

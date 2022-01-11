@@ -89,7 +89,8 @@ Button {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 0;
+  margin-bottom: 45px;
+  margin-top: 45px;
 }
 
 // cluster
@@ -102,17 +103,29 @@ Button {
 // highlight
 .hig {
   background-color: $yellow2;
-  border: 3px solid $white;
   display: flex;
 }
 
-.hig > section {
-  border: 2px solid $red;
+
+.left-hig {
+  align-content: center;
+  display: flex;
+  justify-content: center;
 }
 
+.right-hig {
+  display: flex;
+  flex-direction: column;
+}
 
 .home-image {
-  max-width: 100%;
+  max-width: 88%;
+}
+
+.hig-image {
+  margin-bottom: 5%;
+  margin-top: 5%;
+  max-width: 90%;
 }
 
 .bot-card {
