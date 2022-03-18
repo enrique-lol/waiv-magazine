@@ -21,7 +21,6 @@ class UpdateArticle extends Component {
     // } catch (err) {
     // }
     const { user, match, msgAlert } = this.props
-    // make a request for a single bathroom
     getArticle(match.params.id, user)
       .then(res => this.setState({ article: res.data.article }))
       .catch(error => {

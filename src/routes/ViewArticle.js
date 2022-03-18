@@ -44,6 +44,25 @@ class ViewArticle extends Component {
       }))
       .catch(console.error)
   }
+  saveArticle = () => {
+    const { user, match, msgAlert } = this.props
+    axios({
+      url: `${apiUrl}/saveart`,
+      method: 'post',
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      },
+      data: {
+        article: `${match.params.id}`
+      }
+    })
+      .then(msgAlert({
+        heading: 'Success!',
+        message: 'Your article has been saved ',
+        variant: 'primary'
+      }))
+      .catch(console.error)
+  }
   render () {
     let articleJsx
     const { article, deleted } = this.state
@@ -57,6 +76,7 @@ class ViewArticle extends Component {
           <div className='article-main'>
             <h2 className='roboto-mono'>{article.title}</h2>
             <img className='article-image' src={article.thumbnail}/>
+            <button onClick={this.saveArticle} key={article.id} >Save</button>
             <p className='art-text'>By {article.authorName} on {article.publishDate} -- {article.intro}</p>
             {article.img2 ? <img className='article-image' src={article.img2}/> : null }
             {article.heading2 ? <h6 className='head-text'>{article.heading2}</h6> : null }

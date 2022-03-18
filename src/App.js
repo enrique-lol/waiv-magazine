@@ -81,7 +81,7 @@ class App extends Component {
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
           <Route path='/articles/:id' render={() => (
-            <ViewArticle msgAlert={this.msgAlert} />
+            <ViewArticle msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
@@ -91,12 +91,6 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/home' render={() => (
-            <HomeIndex msgAlert={this.msgAlert} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/home/articles/:id' render={() => (
-            <ViewArticle msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/home/articles/:id/update/' render={() => (
             <UpdateArticle msgAlert={this.msgAlert} user={user} />
