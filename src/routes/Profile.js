@@ -1,42 +1,39 @@
 import React, { Fragment, Component } from 'react'
-import { withRouter, Redirect, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { profile } from './../api/auth.js'
+// import { savedArticles } from './../api/article-auth.js'
 
 class Profile extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      articles: null,
-      deleted: false
+      user: null,
+      articles: null
     }
   }
   componentDidMount () {
     const { user } = this.props
     profile(user)
-      .then(res => console.log(res))
-    // .then(res => this.setState({ articles: res.data.article }))
+      // .then(res => console.log(res.data.user.savedArtIds))
+      .then(res => this.setState({ user: res.data.user }))
   }
   render () {
-    let articlesJsx
-    const { articles, deleted } = this.state
+    let profileJsx
+    const { user, articles } = this.state
     if (!articles) {
-      articlesJsx = 'Loading...'
-      return articlesJsx
+      profileJsx = 'Loading...'
+      return profileJsx
     }
-    if (articles) {
-      articlesJsx = articles.map(article => (
-        <Link to={`/article/${article._id}`} key={article._id}>
-          <h3>{article.title}</h3>
-        </Link>
-      ))
+    if (user) {
+      profileJsx = (
+        <Fragment>
+          <h3>hello</h3>
+        </Fragment>
+      )
     }
 
-    return (
-      <Fragment>
-        {deleted ? <Redirect to="/"/> : articlesJsx}
-      </Fragment>
-    )
+    return profileJsx
   }
 }
 export default withRouter(Profile)

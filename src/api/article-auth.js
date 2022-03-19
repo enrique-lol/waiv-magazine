@@ -46,6 +46,13 @@ export const getArticle = (id) => {
   })
 }
 
+// Show/Index Article //////////////////////////////////////////////////////////
+export const savedArticles = (id) => {
+  return axios({
+    url: apiUrl + '/profileArticles/' + id,
+    method: 'GET'
+  })
+}
 // //////////////////////////////
 
 export const articleUpdate = (id, article, user) => {
