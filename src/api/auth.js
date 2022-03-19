@@ -53,3 +53,14 @@ export const changePassword = (passwords, user) => {
     }
   })
 }
+
+// Show 1 PROFILE ////////////////////////////////////////////////////////
+export const profile = (user) => {
+  return axios({
+    url: apiUrl + '/getuser/' + user._id,
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${user.token}`
+    }
+  })
+}

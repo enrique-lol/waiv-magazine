@@ -20,6 +20,7 @@ import CreateArticle from './routes/CreateArticle.js'
 import UpdateArticle from './routes/UpdateArticle.js'
 // import AboutHome from './routes/AboutHome.js'
 import FutureFeature from './routes/FutureFeature.js'
+import Profile from './routes/Profile.js'
 
 class App extends Component {
   constructor (props) {
@@ -72,7 +73,7 @@ class App extends Component {
             <FutureFeature msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
           <Route exact path='/my-profile' render={() => (
-            <FutureFeature msgAlert={this.msgAlert} setUser={this.setUser} />
+            <Profile msgAlert={this.msgAlert} user={user} />
           )} />
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
