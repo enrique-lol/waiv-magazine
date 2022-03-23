@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { retreiveArticles } from './../api/article-auth.js'
+// import { retreiveArticles } from './../api/article-auth.js'
 
 class SavedArticles extends Component {
   constructor (props) {
@@ -10,19 +10,19 @@ class SavedArticles extends Component {
     }
   }
   componentDidMount () {
-    const { array } = this.props
-    console.log(`ARRAY111: ${array}`)
-    retreiveArticles(array)
-      .then(res => this.setState({ savedArticles: res.data.savedArticles }))
-      // .then(() => console.log(`STATE: ${this.state}`))
-      // .then(res => console.log(`RESPONSE: ${res.data}`))
-      // .catch(error => {
-      //   msgAlert({
-      //     heading: 'Error',
-      //     message: error.message,
-      //     variant: 'danger'
-      //   })
-      // })
+    const { array } = this.props.array
+    console.log(array)
+    // retreiveArticles(array)
+    // .then(res => this.setState({ savedArticles: res.data.savedArticles }))
+    // .then(() => console.log(`STATE: ${this.state}`))
+    // .then(res => console.log(`RESPONSE: ${res.data}`))
+    // .catch(error => {
+    //   msgAlert({
+    //     heading: 'Error',
+    //     message: error.message,
+    //     variant: 'danger'
+    //   })
+    // })
   }
 
   render () {
