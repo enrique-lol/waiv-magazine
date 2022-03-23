@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { profile } from './../api/auth.js'
-// import { savedArticles } from './../api/article-auth.js'
+import SavedArticles from './../routes/SavedArticles.js'
 
 class Profile extends Component {
   constructor (props) {
@@ -9,31 +9,28 @@ class Profile extends Component {
 
     this.state = {
       user: null,
-      articles: null
+      array: null
     }
   }
   componentDidMount () {
     const { user } = this.props
     profile(user)
-      // .then(res => console.log(res.data.user.savedArtIds))
-      .then(res => this.setState({ user: res.data.user }))
+      .then(res => this.setState({ user: res.data.user.email, array: res.data.user.savedArtIds }))
   }
   render () {
-    let profileJsx
-    const { user, articles } = this.state
-    if (!articles) {
-      profileJsx = 'Loading...'
-      return profileJsx
-    }
-    if (user) {
-      profileJsx = (
-        <Fragment>
-          <h3>hello</h3>
-        </Fragment>
-      )
-    }
+    // retreiveArticles(this.state.user.savedArtIds)
+    //   .then(res => this.setState({ articles: res.data.articles }))
+    const { user, array } = this.state
+    const dataJsx = (
+      <p>Hello {user}</p>
+    )
 
-    return profileJsx
+    return (
+      <Fragment>
+        {dataJsx}
+        <SavedArticles array={array}/>
+      </Fragment>
+    )
   }
 }
 export default withRouter(Profile)

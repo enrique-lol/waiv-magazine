@@ -16,7 +16,6 @@ class HomeIndex extends Component {
     const { msgAlert, user } = this.props
     homeIndex(user)
       .then(res => this.setState({ articles: res.data.articles }))
-      .then(() => console.log(`STATE: ${this.state.articles}`))
       // .then(res => console.log(`RESPONSE: ${res.data}`))
       .catch(error => {
         msgAlert({

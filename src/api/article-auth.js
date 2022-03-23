@@ -35,21 +35,20 @@ export const articleCreate = (article, user) => {
     data: { article }
   })
 }
-// Show 1 Article ////////////////////////////////////////////////////////
-export const getArticle = (id) => {
+// cle ////////////////////////////////////////////////////////
+export const retreiveArticles = (array) => {
+  console.log(`ARRAY:${array}`)
   return axios({
-    url: apiUrl + '/articles/' + id,
-    method: 'GET'
-    // headers: {
-    //   'Authorization': `Bearer ${user.token}`
-    // }
+    url: apiUrl + '/select-articles',
+    method: 'GET',
+    data: { array }
   })
 }
 
 // Show/Index Article //////////////////////////////////////////////////////////
-export const savedArticles = (id) => {
+export const getArticle = (id) => {
   return axios({
-    url: apiUrl + '/profileArticles/' + id,
+    url: apiUrl + '/articles/' + id,
     method: 'GET'
   })
 }
