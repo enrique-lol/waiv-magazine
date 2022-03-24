@@ -5,6 +5,7 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 import { getArticle } from './../api/article-auth.js'
 import FutureFeature from './FutureFeature.js'
+import Comments from './Comments.js'
 
 class ViewArticle extends Component {
   constructor (props) {
@@ -12,11 +13,15 @@ class ViewArticle extends Component {
 
     this.state = {
       article: null,
-      deleted: false
+      deleted: false,
+      auth: false
     }
   }
   componentDidMount () {
-    const { match, msgAlert } = this.props
+    const { match, msgAlert, user } = this.props
+    if (user) {
+      this.setState({ auth: true })
+    }
     getArticle(match.params.id)
       .then(res => this.setState({ article: res.data.article }))
       .catch(error => {
@@ -65,7 +70,7 @@ class ViewArticle extends Component {
   }
   render () {
     let articleJsx
-    const { article, deleted } = this.state
+    const { article, deleted, auth } = this.state
     if (!article) {
       articleJsx = 'Loading...'
       return articleJsx
@@ -109,7 +114,7 @@ class ViewArticle extends Component {
     return (
       <Fragment>
         {deleted ? <Redirect to="/home"/> : articleJsx}
-        {comments}
+        {auth ? < Comments key={article.id} /> : comments}
       </Fragment>
     )
   }
